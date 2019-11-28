@@ -2,8 +2,11 @@ package com.company;
 
 import java.util.regex.Pattern;
 
-public interface regex {
+public interface RegexContainer {
+
     Pattern surnamePattern = Pattern.compile("([A-Z][a-z]{2,})|([А-ЩЇЮЯІ][а-щїюяіь']{2,})");
+    Pattern UkrNamePattern = Pattern.compile("^[А-ЩЮЯҐІЇЄ][а-щьюяґіїє']{1,20}$");
+    Pattern LatinNamePattern = Pattern.compile("^[A-Z][a-z]{2,}");
     Pattern secondNamePattern = Pattern.compile("(^[А-ЩЇЮЯІ][а-щїюяіь']{2,})(ович$|івна$|ївна$)");
     Pattern loginPattern = Pattern.compile("^[a-zA-Z][a-zA-Z0-9_]{1,20}$");
     Pattern groupPattern = Pattern.compile("Group A|Group B");
