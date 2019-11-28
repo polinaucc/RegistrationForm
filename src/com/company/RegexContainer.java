@@ -4,10 +4,12 @@ import java.util.regex.Pattern;
 
 public interface RegexContainer {
 
-    Pattern surnamePattern = Pattern.compile("([A-Z][a-z]{2,})|([А-ЩЇЮЯІ][а-щїюяіь']{2,})");
+    Pattern UkrSurnamePattern = Pattern.compile("^[А-ЩЮЯҐІЇЄ][а-щьюяґіїє']{1,20}$");
+    Pattern LatinSurnamePattern = Pattern.compile("^[A-Z][a-z]{2,}");
     Pattern UkrNamePattern = Pattern.compile("^[А-ЩЮЯҐІЇЄ][а-щьюяґіїє']{1,20}$");
     Pattern LatinNamePattern = Pattern.compile("^[A-Z][a-z]{2,}");
-    Pattern secondNamePattern = Pattern.compile("(^[А-ЩЇЮЯІ][а-щїюяіь']{2,})(ович$|івна$|ївна$)");
+    Pattern UkrSecondNamePattern = Pattern.compile("(^[А-ЩЇЮЯІ][а-щїюяіь']{2,})(ович$|івна$|ївна$)");
+    Pattern LatinSecondNamePattern = Pattern.compile("");
     Pattern loginPattern = Pattern.compile("^[a-zA-Z][a-zA-Z0-9_]{1,20}$");
     Pattern groupPattern = Pattern.compile("Group A|Group B");
     Pattern mobilePhonePattern = Pattern.compile("[+][0-9]+[(]?[0-9]{3}[)]?[0-9]{3}[-]?[0-9]{3}");

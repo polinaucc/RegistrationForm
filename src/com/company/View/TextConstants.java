@@ -1,15 +1,19 @@
 package com.company.View;
 
 public class TextConstants {
-    public static final String firstName = "first name in format Іван";
-    public static final String secondName = "second name in format Іванович or Івановна";
-    public static final String surname = "surname in format Іванов";
-    public static final String login = "login. You should enter from 1 to 20 symbols using letters, numbers or '_' ";
-    public static final String group = "group (GroupA or GroupB)";
-    public static final String mobilePhone = "mobile phone in format +38(066)327-524 or +3806327524 or +38(066)327524";
-    public static final String email = "e-mail";
-    public static final String skype = "skype";
-    public static final String index = "index. You should enter 5 digits";
+    public static final String firstName = "input.first.name.data";
+    public static final String secondName = "input.second.name.data";
+    public static final String surname = "input.surname.data";
+    public static final String login = "input.login.data";
+    public static final String group = "input.group.data";
+    public static final String mobilePhone = "input.mobile.phone";
+    public static final String email = "input.email.data";
+    public static final String skype = "input.skype.data";
+    public static final String index = "input.index.data";
+    public static final String WRONG_DATA = "input.wrong.input.data";
+    public static final String INVITATION = "input.invitation.data";
+    public static final String ENTER = "input.enter.data";
+    public static final String END = "input.end.data";
 
 }
 
