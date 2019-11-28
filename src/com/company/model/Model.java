@@ -1,7 +1,23 @@
 package com.company.model;
 
 public class Model {
-    String firstName, secondName, surname, login, group, mobilePhone, skype, index;
+    String firstName;
+    String secondName;
+    String surname;
+    String login;
+    String group;
+    String mobilePhone;
+    String email;
+    String skype;
+    String index;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
