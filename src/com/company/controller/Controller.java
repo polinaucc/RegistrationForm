@@ -19,17 +19,19 @@ public class Controller {
     }
 
     public void process() {
+
+        String str = (String.valueOf(view.bundle.getLocale()).equals("ua"))?"ukr":"eng";
         Scanner scanner = new Scanner(System.in);
         view.printInvitationMessage();
 
         view.printMessage(TextConstants.firstName);
-        model.setFirstName(inputData(scanner, RegexContainer.UkrNamePattern));
+        model.setFirstName(inputData(scanner, (str=="ukr")?RegexContainer.UkrNamePattern:RegexContainer.LatinNamePattern));
 
         view.printMessage(TextConstants.secondName);
-        model.setSecondName(inputData(scanner, RegexContainer.secondNamePattern));
+        model.setSecondName(inputData(scanner, (str=="ukr")?RegexContainer.UkrSecondNamePattern:RegexContainer.LatinSecondNamePattern));
 
         view.printMessage(TextConstants.surname);
-        model.setSurname(inputData(scanner, RegexContainer.surnamePattern));
+        model.setSurname(inputData(scanner, (str=="ukr")?RegexContainer.UkrSurnamePattern:RegexContainer.LatinSurnamePattern));
 
         view.printMessage(TextConstants.login);
         model.setLogin(inputData(scanner, RegexContainer.loginPattern));
