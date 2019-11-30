@@ -1,6 +1,6 @@
 package com.company.View;
 
-public class TextConstants {
+public interface TextConstants {
     public static final String firstName = "input.first.name.data";
     public static final String secondName = "input.second.name.data";
     public static final String surname = "input.surname.data";

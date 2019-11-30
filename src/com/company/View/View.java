@@ -7,24 +7,24 @@ public class View {
 
     static String MESSAGES_BUNDLE_NAME = "textConstants";
     public static final ResourceBundle bundle =
-            ResourceBundle.getBundle(MESSAGES_BUNDLE_NAME, new Locale("ua", "UA"));
-            //ResourceBundle.getBundle("LabelsBundle", new Locale("en"));
+           //ResourceBundle.getBundle(MESSAGES_BUNDLE_NAME, new Locale("ua"));
+             ResourceBundle.getBundle(MESSAGES_BUNDLE_NAME, new Locale("en"));
 
     public void printMessage(String message){
-        System.out.println(TextConstants.ENTER + message);
+        System.out.println(bundle.getString(TextConstants.ENTER)+ bundle.getString(message));
     }
 
     public void printWrongDataMessage(){
-        System.out.println(TextConstants.WRONG_DATA);
+        System.out.println(bundle.getString(TextConstants.WRONG_DATA));
     }
 
     public void printInvitationMessage(){
-        System.out.println(TextConstants.INVITATION);
+        System.out.println(bundle.getString(TextConstants.INVITATION));
     }
 
     public void printEndText()
     {
-        System.out.println(TextConstants.END);
+        System.out.println(bundle.getString(TextConstants.END));
     }
 
     public void printData(String name, String value){
