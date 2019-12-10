@@ -1,13 +1,11 @@
 package com.company.controller;
 
 import com.company.RegexContainer;
-import com.company.View.TextConstants;
-import com.company.View.View;
-import com.company.model.Model;
+import com.company.view.TextConstants;
+import com.company.view.View;
+import com.company.model.*;
 
-import java.util.Map;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class Controller {
     View view;
@@ -19,59 +17,22 @@ public class Controller {
     }
 
     public void process() {
-
-        String str = (String.valueOf(view.bundle.getLocale()).equals("ua"))?"ukr":"eng";
-        Scanner scanner = new Scanner(System.in);
-        view.printInvitationMessage();
-
-        view.printMessage(TextConstants.firstName);
-        model.setFirstName(inputData(scanner, (str=="ukr")?RegexContainer.UkrNamePattern:RegexContainer.LatinNamePattern));
-
-        view.printMessage(TextConstants.secondName);
-        model.setSecondName(inputData(scanner, (str=="ukr")?RegexContainer.UkrSecondNamePattern:RegexContainer.LatinSecondNamePattern));
-
-        view.printMessage(TextConstants.surname);
-        model.setSurname(inputData(scanner, (str=="ukr")?RegexContainer.UkrSurnamePattern:RegexContainer.LatinSurnamePattern));
-
-        view.printMessage(TextConstants.login);
-        model.setLogin(inputData(scanner, RegexContainer.loginPattern));
-
-        view.printMessage(TextConstants.group);
-        model.setGroup(inputData(scanner, RegexContainer.groupPattern));
-
-        view.printMessage(TextConstants.mobilePhone);
-        model.setMobilePhone(inputData(scanner, RegexContainer.mobilePhonePattern));
-
-        view.printMessage(TextConstants.email);
-        model.setEmail(inputData(scanner, RegexContainer.emailPattern));
-
-        view.printMessage(TextConstants.skype);
-        model.setSkype(inputData(scanner, RegexContainer.skypePattern));
-
-        view.printMessage(TextConstants.index);
-        model.setIndex(inputData(scanner, RegexContainer.indexPattern));
-
-        view.printEndText();
-
-        view.printData(TextConstants.firstName, model.getFirstName());
-        view.printData(TextConstants.secondName, model.getSecondName());
-        view.printData(TextConstants.surname, model.getSurname());
-        view.printData(TextConstants.login, model.getLogin());
-        view.printData(TextConstants.group, model.getGroup());
-        view.printData(TextConstants.mobilePhone, model.getMobilePhone());
-        view.printData(TextConstants.email, model.getEmail());
-        view.printData(TextConstants.skype, model.getSkype());
-        view.printData(TextConstants.index, model.getIndex());
+        AddAccount accountBook = new AddAccount(view);
+        Account account = accountBook.inputForm();
+        tryToAddAccount(accountBook, account);
     }
 
-
-    public String inputData(Scanner scanner, Pattern pattern) {
-        String inputSrt = scanner.nextLine();
-        while (!pattern.matcher(inputSrt).matches()) {
-            view.printWrongDataMessage();
-            inputSrt = scanner.nextLine();
+    private void tryToAddAccount(AddAccount accountBook, Account account) {
+        while (true) {
+            try {
+                model.setAccount(account);
+                break;
+            } catch (LoginExistException exc) {
+                view.printMessage(TextConstants.INCORRECT_LOGIN);
+                account = accountBook.enterNewLogin(account);
+            }
         }
-        return inputSrt;
     }
+
 
 }

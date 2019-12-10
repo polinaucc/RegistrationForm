@@ -1,8 +1,9 @@
 package com.company;
 
-import com.company.View.View;
-import com.company.controller.Controller;
 import com.company.model.Model;
+import com.company.view.View;
+import com.company.controller.Controller;
+import com.company.model.Account;
 
 public class Main {
 
